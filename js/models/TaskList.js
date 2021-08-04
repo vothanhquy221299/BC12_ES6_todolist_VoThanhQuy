@@ -9,9 +9,17 @@ export default class TaskList{
     removeTask = index =>{
         return this.arrTask.splice(index, 1);
     }
-    addCompleteTask = index =>{
-        this.arrCompleteTask = [...this.arrCompleteTask];
-        this.removeTaskTask(index);
+    addCompleteTask = (index) =>{
+        let completeTask ="";
+        if (index < this.arrTask.length) {
+            completeTask = this.arrTask.slice(index, index + 1);
+          } else {
+            completeTask = this.arrTask.slice(index);
+         
+          }
+        this.arrCompleteTask = [...this.arrCompleteTask, ...completeTask];
+        this.removeTask(index);
+        // console.log("index")
     } 
 
 }
