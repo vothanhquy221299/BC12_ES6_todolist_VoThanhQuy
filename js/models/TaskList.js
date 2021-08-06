@@ -1,7 +1,6 @@
 export default class TaskList{
     constructor(){
         this.arrTask = [];
-        this.arrCompleteTask = [];
     }
     addTask = task =>{
        return this.arrTask.push(task);
@@ -10,16 +9,15 @@ export default class TaskList{
         return this.arrTask.splice(index, 1);
     }
     addCompleteTask = (index) =>{
-        let completeTask ="";
-        if (index < this.arrTask.length) {
-            completeTask = this.arrTask.slice(index, index + 1);
-          } else {
-            completeTask = this.arrTask.slice(index);
-         
-          }
-        this.arrCompleteTask = [...this.arrCompleteTask, ...completeTask];
-        this.removeTask(index);
-        // console.log("index")
+        let task = this.arrTask[index];
+        task.status = 1;
+    }
+    sortAZ = () =>{
+        this.arrTask.sort((a, b) => a.taskName.localeCompare(b.taskName));
     } 
+    sortZA = () =>{
+        this.arrTask.reverse((a, b) => a.taskName.localeCompare(b.taskName));
+    }
+
 
 }
